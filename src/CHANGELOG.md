@@ -9,8 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add and configure Tailwind CSS.
-- Add icons for bomb and white flag.
+- Added and configure Tailwind CSS.
+- Added icons for bomb and white flag.
+- Added react icons library.
 
 ### Changed
 
