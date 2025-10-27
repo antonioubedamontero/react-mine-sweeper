@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 
+import { BoardContext } from "./context";
+
 import type { BoardConfig, CellItem } from "./interfaces";
 import { Board, EndOfGame, WinGame } from "./components";
-import { generateBoard } from "./helpers";
+import { generateBoard, placeBombsInBoard } from "./helpers";
 
 export const Game = () => {
   const [board, setBoard] = useState<CellItem[][]>([]);
-  const [pendingBombs, setPendingBombs] = useState<number | null>(null);
+  const [pendingBombs, setPendingBombs] = useState<number>(0);
   const [isGameLost, setIsGameLost] = useState<boolean>(false);
 
   useEffect(() => {
@@ -14,30 +16,36 @@ export const Game = () => {
     const boardConfig: BoardConfig = {
       boardSize: 9,
       numOfBombs: 4,
-      setPendingBombs,
-      setIsGameLost,
     };
-
-    const generatedBoard = generateBoard(boardConfig);
-    setBoard(generatedBoard);
     setPendingBombs(boardConfig.numOfBombs);
+
+    const generatedBoard = generateBoard(boardConfig.boardSize);
+    const boardWithBombs = placeBombsInBoard(generatedBoard, boardConfig);
+
+    setBoard(boardWithBombs);
   }, []);
 
   if (isGameLost) {
     return <EndOfGame />;
   }
 
-  if (pendingBombs === 0) {
+  if (board.length > 0 && pendingBombs === 0) {
     return <WinGame />;
   }
 
   return (
-    board && (
-      <Board
-        board={board}
-        setPendingBombs={setPendingBombs}
-        setIsGameLost={setIsGameLost}
-      />
+    board &&
+    pendingBombs && (
+      <BoardContext.Provider
+        value={{
+          pendingBombs,
+          isGameLost,
+          setPendingBombs,
+          setIsGameLost,
+        }}
+      >
+        <Board board={board} />
+      </BoardContext.Provider>
     )
   );
 };

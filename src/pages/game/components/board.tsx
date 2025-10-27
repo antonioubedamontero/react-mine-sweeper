@@ -3,11 +3,9 @@ import type { CellItem } from "../interfaces";
 
 interface Props {
   board: CellItem[][];
-  setPendingBombs: (pendingBombs: number | null) => void;
-  setIsGameLost: (isGameLost: boolean) => void;
 }
 
-export const Board = ({ board, setPendingBombs, setIsGameLost }: Props) => {
+export const Board = ({ board }: Props) => {
   return (
     <div className="h-screen flex justify-center items-center">
       <div>
@@ -24,8 +22,6 @@ export const Board = ({ board, setPendingBombs, setIsGameLost }: Props) => {
                         col: col.cellPosition.col,
                       },
                       hasBomb: col.hasBomb,
-                      setPendingBombs,
-                      setIsGameLost,
                     }}
                   />
                 );

@@ -1,8 +1,14 @@
 # React Mine Sweeper
 
-A React Mine Sweeper Game developed with React + TypeScript + Vite, using props, local states, effects, useRef, handlers, custom hooks and react router.
+A React Mine Sweeper Game developed with React + TypeScript + Vite and Tailwind CSS.
 
-As a part of UI, it used Tailwind CSS and icon management.
+- Props.
+- Event handlers.
+- Local states with useState.
+- Effects
+- Context with useContext.
+- Custom hooks.
+- React Router.
 
 ## Launch linter to found potential errors
 

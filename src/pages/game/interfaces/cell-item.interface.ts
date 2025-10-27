@@ -7,6 +7,4 @@ export interface CellPosition {
 export interface CellItem {
   cellPosition: CellPosition;
   hasBomb: boolean;
-  setPendingBombs: (pendingBombs: number) => void;
-  setIsGameLost: (isGameLost: boolean) => void;
 }

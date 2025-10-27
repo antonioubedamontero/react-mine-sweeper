@@ -7,7 +7,8 @@ import "./index.css";
 import { router } from "./router";
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
+  // TODO: Uncomment strict mode
+  // <StrictMode>
+  <RouterProvider router={router} />
+  // </StrictMode>
 );
