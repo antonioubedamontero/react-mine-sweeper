@@ -1,3 +1,4 @@
-export * from "./get-icon-name";
-export * from "./get-cell-background-classes";
-export * from "./generate-board";
+export * from "./icon-name-helpers";
+export * from "./cell-background-helpers";
+export * from "./board-helpers";
+export * from "./storage-helpers";

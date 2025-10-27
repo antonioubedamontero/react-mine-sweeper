@@ -1,2 +1,2 @@
-export { Board } from "./board";
+export { Game } from "./game";
 export { Config } from "./config";

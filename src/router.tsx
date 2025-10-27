@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import { Instructions } from "./pages/instructions";
-import { Board, Config } from "./pages/game";
+import { Game, Config } from "./pages/game";
 
 export const router = createBrowserRouter([
   {
@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/game",
-    Component: Board,
+    Component: Game,
   },
   {
     path: "*",
