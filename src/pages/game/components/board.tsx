@@ -3,11 +3,29 @@ import type { CellItem } from "../interfaces";
 
 interface Props {
   board: CellItem[][];
+  numOfBombs: number;
 }
 
-export const Board = ({ board }: Props) => {
+export const Board = ({ board, numOfBombs }: Props) => {
   return (
-    <div className="h-screen flex justify-center items-center">
+    <section className="h-screen flex flex-col gap-3 justify-center items-center">
+      <section>
+        <h1 className="p-2 text-2xl font-bold underline text-blue-600 ">
+          Buscaminas
+        </h1>
+        <div className="p-2">
+          <p>
+            <span className="font-bold">Dimensión: </span>
+            {`${board.length}x${board.length}`}
+          </p>
+
+          <p>
+            <span className="font-bold">Nº bombas: </span>
+            {numOfBombs}
+          </p>
+        </div>
+      </section>
+
       <div>
         {board.map((row: CellItem[], rowIndex: number) => {
           return (
@@ -30,6 +48,6 @@ export const Board = ({ board }: Props) => {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };

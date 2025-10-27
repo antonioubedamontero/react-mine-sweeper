@@ -1,4 +1,5 @@
-import type { CellItem, ConfigInfo } from "../interfaces";
+import type { ConfigInfo } from "../../shared/interfaces";
+import type { CellItem } from "../interfaces";
 
 export const generateBoard = (boardSize: number): CellItem[][] => {
   const cellItems: CellItem[][] = [];
@@ -21,7 +22,7 @@ export const placeBombsInBoard = (
   board: CellItem[][],
   configInfo: ConfigInfo
 ): CellItem[][] => {
-  let newBoard = structuredClone(board);
+  const newBoard = structuredClone(board);
   let pendingBombs = configInfo.numOfBombs;
 
   while (pendingBombs > 0) {

@@ -2,21 +2,24 @@ import { useEffect, useState } from "react";
 
 import { BoardContext } from "./context";
 
-import type { BoardConfig, CellItem } from "./interfaces";
+import type { CellItem } from "./interfaces";
 import { Board, EndOfGame, WinGame } from "./components";
 import { generateBoard, placeBombsInBoard } from "./helpers";
+import type { ConfigInfo } from "../shared/interfaces";
 
 export const Game = () => {
   const [board, setBoard] = useState<CellItem[][]>([]);
   const [pendingBombs, setPendingBombs] = useState<number>(0);
   const [isGameLost, setIsGameLost] = useState<boolean>(false);
+  const [numOfBombs, setNumOfBombs] = useState<number>(0);
 
   useEffect(() => {
     /* TODO: This should be saved in local storage in config */
-    const boardConfig: BoardConfig = {
+    const boardConfig: ConfigInfo = {
       boardSize: 9,
       numOfBombs: 4,
     };
+    setNumOfBombs(boardConfig.numOfBombs);
     setPendingBombs(boardConfig.numOfBombs);
 
     const generatedBoard = generateBoard(boardConfig.boardSize);
@@ -34,7 +37,7 @@ export const Game = () => {
   }
 
   return (
-    board &&
+    board.length > 0 &&
     pendingBombs && (
       <BoardContext.Provider
         value={{
@@ -44,7 +47,7 @@ export const Game = () => {
           setIsGameLost,
         }}
       >
-        <Board board={board} />
+        <Board board={board} numOfBombs={numOfBombs} />
       </BoardContext.Provider>
     )
   );

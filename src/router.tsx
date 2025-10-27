@@ -1,7 +1,8 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import { Instructions } from "./pages/instructions";
-import { Game, Config } from "./pages/game";
+import { Config } from "./pages/config";
+import { Game } from "./pages/game/game";
 
 export const router = createBrowserRouter([
   {
